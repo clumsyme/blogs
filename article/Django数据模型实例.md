@@ -214,4 +214,4 @@ Django使用`ManyToManyField`来处理多对多关系，我们用学生和课程
 ---
 参考：
 
-+ [Django Model field reference](https://docs.djangoproject.com/en/1.10/ref/models/fields/#django.db.models.ManyToManyField)
++ [Django Model field reference](https://docs.djangoproject.com/en/1.10/ref/models/fields/)
