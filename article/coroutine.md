@@ -10,7 +10,7 @@ python协程最早的实现是在python2.5中，自此可以在表达式中使�
 
 + 新的`yield from`语法使得复杂的、嵌套的生成器代码更加简洁。
 
-明显生成器与协程并不是一个东西，但是使用同一个关键字很容易让人迷惑，因此在python3.5，python借鉴了其他语言，添加了两个新的关键字`async`和`await`用来处理协程，使得协程代码更容易让人理解。
+使用同一个关键字很容易让人迷惑，因此在python3.5，python借鉴了其他语言，添加了两个新的关键字`async`和`await`用来处理协程，使得协程代码更容易让人理解。
 
 ## 初步了解协程
 
@@ -181,5 +181,98 @@ python协程最早的实现是在python2.5中，自此可以在表达式中使�
 
 ## 使用 yield from
 
-def delegate():
-    average = yield from avg()
+### 生成器中的 yield from
+
+如果只是用于产生值，yield from 可以更直观地替代 for 循环中的 yield，例如：
+
+    :::python
+    def gen():
+        for c in 'ABCDE':
+            yield c
+
+可以写作:
+
+    :::python
+    def gen():
+        yield from 'ABCDE'
+
+如果 yield from 只是作为一个语法糖类似的功能的话，python 可能也不会接受它作为新的语言特性。它真正的作用是delegating generator ：最外层的 caller(PEP380 使用的术语，指调用 delegating generator 的对象) 传递数据给 delegating generator ，实际上通过 delegating generator 传递给了subgenerator，而 subgenerator 生成的数据反过来通过 delegating generator 传递回 caller。
+
+如果 subgenerator 有返回值，则 delegating generator 会自动处理`StopIteration`，并将返回值赋予 yield from 表达式。
+
+    :::python
+    # 作为 subgenerator 
+    def averager():
+        '''上一节介绍的平均协程程序，此处为 subgenerator '''
+        total = 0
+        count = 0
+        average = None
+        while True:
+            # caller 传递的数据将传递到这里
+            new = yield
+            # 用于终结 while 循环
+            if new == None:
+                break
+            total += new
+            count += 1
+            average = total / count
+        # 生成器返回值
+        return {'count': count, 'average': average}
+
+    #  delegating generator 
+    def grouper(results, key):
+        ''' delegating generator '''
+        while True:
+            # 所有从 caller 传递的数据都通过 yield from 传递给 subgenerator 
+            # 直到 subgenerator 停止并返回，返回值将赋值给result[key]
+            results[key] = yield from averager()
+
+    # caller
+    def main(data):
+        '''客户端代码，也就是 caller'''
+        results = {}
+        for key, values in data.items():
+            # group 是一个生成器对象，可以像协程一样操作它
+            group = grouper(results, key)
+            # 启动协程
+            next(group)
+            for value in values:
+                # 传递数据，数据将传递到 new = yield, grouper 不会接触到改数据
+                group.send(value)
+            # 结束 subgenerator ，使 delegating generator 继续运行
+            group.send(None)
+        report(results)
+    
+    def report(results):
+        for key, result in results.items():
+            group, unit = key.split(';')
+            print('{:2} {:5} averaging {:.2f}{}'.format(
+                result['count'], group, result['average'], unit
+            ))
+
+    data = {
+        'girls;kg':
+            [40.9, 38.5, 44.3, 42.2, 45.2, 41.7, 44.5, 38.0, 40.6, 44.5],
+        'girls;m':
+            [1.6, 1.51, 1.4, 1.3, 1.41, 1.39, 1.33, 1.46, 1.45, 1.43],
+        'boys;kg':
+            [39.0, 40.8, 43.2, 40.8, 43.1, 38.6, 41.4, 40.6, 36.3],
+        'boys;m':
+            [1.38, 1.5, 1.32, 1.25, 1.37, 1.48, 1.25, 1.49, 1.46],
+    }
+    
+    # 运行上述代码
+    >>> main(data)
+     9 boys  averaging 1.39m
+    10 girls averaging 42.04kg
+     9 boys  averaging 40.42kg
+    10 girls averaging 1.43m
+
+描述一下整个 main 函数运行流程：
+
++ 每个外层 for 循环生成一个新的 grouper 实例，也就是 delegating generator 
++ next(group) 启动 delegating generator ，并在调用 subgenerator 之后在 yield from 处暂停
++ 内层 for 循环直接将数据传递给 subgenerator ，与此同时 delegating generator 仍在 yield from 处暂停
++ 当内层 for 循环结束时，group仍然在 yield from 处暂停，所以results[key]赋值还未完成
++ 传递 None 给 delegating generator （实际上传递给了 subgenerator ）以终结 subgenerator ，并使 delegating generator 继续运行，完成赋值
++ 外层 for 循环继续运行，生成新的 grouper 实例，上一个 grouper 被垃圾回收
