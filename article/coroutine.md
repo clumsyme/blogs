@@ -1,3 +1,9 @@
+>Your weakness is your strength and your strength is your weakness.<br>
+>The strength of threads is shared state.<br>
+>The weakness of threads is shared state.<br>
+>The strength of processers is their independence from one another.<br>
+>The weakness of processers is lack of communication.
+
 我们都知道在函数体内使用`yield`关键字将会使函数返回一个生成器对象，在英文字典中，yield不仅有“生产”(produce)的意思，还有“屈服，让步”(give way)的意思，因此python最开始也使用了生成器的关键字`yield`来处理**协程(coroutine)**。但是不同的是，协程中`yield`关键字通常出现于表达式的右侧，例如`received = yield value`；协程不仅可以生成数据（或者不生成数据），也可以接收数据。理解协程中的`yield`，要把`yield`看做是用来执行控制流的，而不是生成数据的。
 
 ## python协程的历史
