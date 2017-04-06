@@ -1,1 +1,0 @@
-# MarkDown files for articles in [imliyan](http://imliyan.com).
