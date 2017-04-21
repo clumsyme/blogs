@@ -41,9 +41,9 @@ const increEven = () => (dispatch, getState) => {
   dispatch(incre())
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => ({
   increEven: () => dispatch(increEven())
-}
+})
 
 <button onClick={this.props.IncreEven}>IncreEven</button>
 ```
@@ -73,9 +73,9 @@ const asyncActionCreater = (action, url) => (query) => (dispatch, getState) => {
 }
 const getData = asyncActionCreater(getDataActions, url)
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => ({
   getData: (query) => dispatch(getData(query))
-}
+})
 ```
 
 如此，我们在调用`getData(query)`时，就会依次触发最内部的函数语句，`request -> success/failure`。
