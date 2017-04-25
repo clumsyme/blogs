@@ -127,7 +127,7 @@ HTML:
 </div>
 
 <div class='scopetwo'>
-    <p class='cv-test'>Look on my work</p>
+    <p class='cv-test'>Look on my works</p>
 </div>
 
 ---
