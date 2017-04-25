@@ -61,7 +61,7 @@ CSS:
 
     :::css
     .scopeone {
-        --text-color: blue
+        --text-color: green
     }
 
     .scopetwo {
