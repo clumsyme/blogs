@@ -1,6 +1,6 @@
 ## 为什么使用 CSS Variables
 
-在开发一个 Web 应用的时候，经常需要为许多元素设置属性（如`color`、`width`、`height`）等，即使很多元素具有相同的属性，我们还是要为每个元素单独设置属性。这样一旦应用更改主题，比如更改主色调，那么要为每一个元素一个一个地修改，为什么不能像大部分编程语言一样，定义一个变量，用这个变量得引用来设置对象（元素）的属性，这样只需要修改变量值就可以修改所有的属性值了。CSS Variables 就是做这个的。
+在开发一个 Web 应用的时候，经常需要为许多元素设置属性（如`color`、`width`、`height`）等，即使很多元素具有相同的属性，我们还是要为每个元素单独设置属性。这样一旦应用更改主题，比如更改主色调，那么要为每一个元素一个一个地修改，为什么不能像大部分编程语言一样，定义一个变量，用这个变量得引用来设置对象（元素）的属性？这样只需要修改变量值就可以修改所有的属性值了。CSS Variables 就是做这个的。
 
 ## 为什么不用SASS/LESS
 
@@ -14,15 +14,15 @@
 
 ### 定义变量
 
-变量的定义格式是`--somevar`，如下`--text-color: #ea4335`，即将`#ea4335`的值赋给`--text-color`。
+变量的定义格式是`--somevar`，如下`--text-color: red`，即将`red`的值赋给`--text-color`。
 
-要是用定义的变量，使用`var()`函数，如下`var(--text-color)`会返回`--text-color`对应的值，也即是`#ea4335`。
+要使用定义的变量，使用`var()`函数，如下`var(--text-color)`会返回`--text-color`对应的值，也即是`red`。
 
 CSS:
 
     :::css
     :root {
-        --text-color: #ea4335
+        --text-color: red
     }
     .cv-test {
         color: var(--text-color)
@@ -55,15 +55,11 @@ HTML：
 
 CSS Variables 的另一个特性是支持作用域，这就意味着我们可以在不同的层级定义相同名称的变量。如果某元素没有 CSS Variables，则会继承父元素。
 
-利用这一特性。我们也可以通过媒体查询写出响应式的样式来。
+利用这一特性，我们也可以通过媒体查询写出响应式的样式来。
 
 CSS:
 
     :::css
-    :root {
-    --text-color: red
-    }
-
     .scopeone {
         --text-color: blue
     }
@@ -99,10 +95,6 @@ HTML:
     </div>
 
 <style>
-:root {
-    --text-color: red
-}
-
 .scopeone {
     --text-color: green
 }
@@ -254,13 +246,13 @@ HTML:
     <button id='topurple'>紫色</button>
     <button id='toskyblue'>天蓝色</button>
     <style>
-        cv-test2: {
+        cv-test2 {
             color: var(--text-color)
         }
-        cv-test3: {
+        cv-test3 {
             color: var(--text-color)
         }
-        cv-test4: {
+        cv-test4 {
             color: var(--text-color)
         }
     </style>
@@ -273,6 +265,7 @@ HTML:
         })
     </script>
 
+
 结果：
 
 ---
@@ -283,17 +276,21 @@ HTML:
 <p class='cv-test4'>and in the darkness bind them</p>
 <button id='topurple'>紫色</button>
 <button id='toskyblue'>天蓝色</button>
+
 <style>
-    .cv-test2: {
-        color: var(--text-color)
-    }
-    .cv-test3: {
-        color: var(--text-color)
-    }
-    .cv-test4: {
-        color: var(--text-color)
-    }
+.cv-test2 {
+    color: var(--text-color);
+}
+
+.cv-test3 {
+    color: var(--text-color);
+}
+
+.cv-test4 {
+    color: var(--text-color);
+}
 </style>
+
 <script>
     document.getElementById('topurple').addEventListener('click', function() {
         document.documentElement.style.setProperty('--text-color', 'purple');
@@ -304,3 +301,11 @@ HTML:
 </script>
 
 ---
+
+## 参考
+
+---
+
+- [Using CSS Variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables)
+
+- [CSS Variables: Why Should You Care?](https://developers.google.com/web/updates/2016/02/css-variables-why-should-you-care)
