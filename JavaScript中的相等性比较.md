@@ -84,7 +84,7 @@ Object|false|false|ToPrimitive(A) == B|ToPrimitive(A) == B|ToPrimitive(A) == ToN
 
 因此返回`true`。
 
-所以，**`[] == false`表达式的值为`true`，但空数组最想本身`[]`是不被视为`false`的。实际上，JavaScript中视为`false`的有`false, null, undefined, 0, "", NaN`，其他类型可通过类型转换转换为`Boolean`类型**。
+所以，**`[] == false`表达式的值为`true`，但空数组对象本身`[]`是不被视为`false`的。实际上，JavaScript中视为`false`的有`false, null, undefined, 0, "", NaN`，其他类型可通过类型转换转换为`Boolean`类型**。
 
 #### 关于`![] == false`
 
