@@ -19,6 +19,7 @@
     }
     .demo1 {
         background-color: #1ce4c2;
+        -webkit-clip-path: polygon(50% 0, 100% 100%, 0 100%);
         clip-path: polygon(50% 0, 100% 100%, 0 100%);
     }
 
@@ -31,6 +32,7 @@
     }
     .demo1 {
         background-color: #1ce4c2;
+        -webkit-clip-path: polygon(50% 0, 100% 100%, 0 100%);
         clip-path: polygon(50% 0, 100% 100%, 0 100%);
     }
 </style>
@@ -48,6 +50,7 @@
     :::css
     .demo2 {
         background-color: #f2c145;
+        -webkit-clip-path: polygon(50% 0, 100% 100%, 0 100%);
         clip-path: polygon(50% 0, 100% 100%, 0 100%);
     }
 
@@ -56,6 +59,7 @@
 <style>
     .demo2 {
         background-color: #f2c145;
+        -webkit-clip-path: circle();
         clip-path: circle();
     }
 </style>
@@ -73,6 +77,7 @@
     :::css
     .demo3 {
         background-color: #cf45c8;
+        -webkit-clip-path: polygon(20% 0, 80% 0, 100% 20%, 100% 80%, 80% 100%, 20%  100%, 0 80%, 0 20%);
         clip-path: polygon(20% 0, 80% 0, 100% 20%, 100% 80%, 80% 100%, 20%  100%, 0 80%, 0 20%);
     }
 
@@ -81,6 +86,7 @@
 <style>
     .demo3 {
         background-color: #cf45c8;
+        -webkit-clip-path: polygon(20% 0, 80% 0, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0 80%, 0 20%);
         clip-path: polygon(20% 0, 80% 0, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0 80%, 0 20%);
     }
 </style>
@@ -99,6 +105,7 @@
     :::css
     .demo4 {
         background-color: #23ef6a;
+        -webkit-clip-path: ellipse(40% 25% at 50% 50%);
         clip-path: ellipse(40% 25% at 50% 50%);
     }
 
@@ -107,6 +114,7 @@
 <style>
     .demo4 {
         background-color: #23ef6a;
+        -webkit-clip-path: ellipse(40% 25% at 50% 50%);
         clip-path: ellipse(40% 25% at 50% 50%);
     }
 </style>
@@ -126,15 +134,16 @@
     :::css
     .demo4 {
         background-color: #cf45c8;
-        clip-path: polygon(20% 0, 80% 0, 100% 20%, 100% 80%, 80% 100%,  20%100%, 0 80%, 0 20%);
         animation: circle 1s infinite alternate;
     }
     @keyframes circle {
         0% {
-            clip-path: circle(100px)
+            -webkit-clip-path: circle(100px);
+            clip-path: circle(100px);
         }
         100% {
-            clip-path: circle(0)
+            -webkit-clip-path: circle(0);
+            clip-path: circle(0);
         }
     }
 
@@ -143,15 +152,16 @@
 <style>
     .demo5 {
         background-color: #cf45c8;
-        clip-path: polygon(20% 0, 80% 0, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0 80%, 0 20%);
         animation: circle 1s infinite alternate;
     }
     @keyframes circle {
         0% {
-            clip-path: circle(100px)
+            -webkit-clip-path: circle(100px);
+            clip-path: circle(100px);
         }
         100% {
-            clip-path: circle(0)
+            -webkit-clip-path: circle(0);
+            clip-path: circle(0);
         }
     }
 </style>
@@ -169,15 +179,18 @@
     :::css
     .demo6 {
         background-color: #8ac351;
+        -webkit-clip-path: polygon(20% 0, 80% 0, 100% 20%, 100% 80%, 80% 100%,  20%100%, 0 80%, 0 20%);
         clip-path: polygon(20% 0, 80% 0, 100% 20%, 100% 80%, 80% 100%,  20%100%, 0 80%, 0 20%);
         animation: msg 1s infinite alternate ease-in-out;
     }
     @keyframes msg {
         0% {
-            clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%)
+            -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
+            clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
         }
         100% {
-            clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%,   0% 60%, 10% 20%)
+            -webkit-clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%,   0% 60%, 10% 20%);
+            clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%,   0% 60%, 10% 20%);
         }
     }
 
@@ -186,15 +199,18 @@
 <style>
     .demo6 {
         background-color: #8ac351;
+        -webkit-clip-path: polygon(20% 0, 80% 0, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0 80%, 0 20%);
         clip-path: polygon(20% 0, 80% 0, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0 80%, 0 20%);
         animation: msg 1s infinite alternate ease-in-out;
     }
     @keyframes msg {
         0% {
+            -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
             clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%)
         }
         100% {
-            clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%)
+            -webkit-clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
+            clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
         }
     }
 </style>
@@ -229,7 +245,8 @@
         font-family: 'Times New Roman', Times, serif;
         text-align: center;
         white-space: pre;
-        clip-path: circle(50px at 200px 100px)
+        -webkit-clip-path: circle(50px at 200px 100px);
+        clip-path: circle(50px at 200px 100px);
     }
 
 
@@ -238,10 +255,10 @@
     :::js
     let ring = document.querySelector('#ring')
     window.addEventListener('mousemove', (e) => {
-        let x = e.clientX
-        let y = e.clientY
-        let ox = ring.offsetLeft - document.body.scrollLeft
-        let oy = ring.offsetTop - document.body.scrollTop
+        let x = e.pageX
+        let y = e.pageY
+        let ox = ring.offsetLeft
+        let oy = ring.offsetTop
         let newPath = `circle(50px at ${x-ox}px ${y-oy}px)`
         ring.style['clip-path'] = newPath
     })
@@ -262,23 +279,24 @@ In the Land of Mordor where the Shadows lie。</p>
 </div>
 <style>
 #dark {
-    background-color: #000
+    background-color: #000;
 }
 #ring{
     background: #fff;
     font-family: 'Times New Roman', Times, serif;
     text-align: center;
     white-space: pre;
-    clip-path: circle(50px at 200px 100px)
+    -webkit-clip-path: circle(50px at 200px 100px);
+    clip-path: circle(50px at 200px 100px);
 }
 </style>
 <script>
 let ring = document.querySelector('#ring')
 window.addEventListener('mousemove', (e) => {
-    let x = e.clientX
-    let y = e.clientY
-    let ox = ring.offsetLeft - document.body.scrollLeft
-    let oy = ring.offsetTop - document.body.scrollTop
+    let x = e.pageX
+    let y = e.pageY
+    let ox = ring.offsetLeft
+    let oy = ring.offsetTop
     let newPath = `circle(50px at ${x-ox}px ${y-oy}px)`
     ring.style['clip-path'] = newPath
 })
@@ -330,7 +348,9 @@ In the Land of Mordor where the Shadows lie。</p>
     width: 150px;
     height: 150px;
     background-color: #23bcc7;
+    -webkit-clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    -webkit-shape-outside: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     shape-outside: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     float: left;
 }
