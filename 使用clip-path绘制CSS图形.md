@@ -292,7 +292,7 @@ In the Land of Mordor where the Shadows lie。</p>
 </style>
 <script>
 let ring = document.querySelector('#ring')
-window.addEventListener('mousemove', (e) => {
+ring.addEventListener('mousemove', (e) => {
     let x = e.pageX
     let y = e.pageY
     let ox = ring.offsetLeft
