@@ -357,6 +357,8 @@ dark.addEventListener('mousemove', (e) => {
         let oy = dark2.offsetTop
         let newPath = `circle(50px at ${x-ox}px ${y-oy}px)`
         ring2c.style['clip-path'] = newPath
+        let newOrigin = `${x-ox}px ${y-oy}px`
+	    ring2c.style['transform-origin'] = newOrigin
     })
 
 <div id="dark2">
@@ -406,6 +408,8 @@ dark2.addEventListener('mousemove', (e) => {
     let oy = dark2.offsetTop
     let newPath = `circle(50px at ${x-ox}px ${y-oy}px)`
     ring2c.style['clip-path'] = newPath
+    let newOrigin = `${x-ox}px ${y-oy}px`
+	ring2c.style['transform-origin'] = newOrigin
 })
 </script>
 
