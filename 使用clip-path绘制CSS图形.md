@@ -179,8 +179,6 @@
     :::css
     .demo6 {
         background-color: #8ac351;
-        -webkit-clip-path: polygon(20% 0, 80% 0, 100% 20%, 100% 80%, 80% 100%,  20%100%, 0 80%, 0 20%);
-        clip-path: polygon(20% 0, 80% 0, 100% 20%, 100% 80%, 80% 100%,  20%100%, 0 80%, 0 20%);
         animation: msg 1s infinite alternate ease-in-out;
     }
     @keyframes msg {
@@ -199,8 +197,6 @@
 <style>
     .demo6 {
         background-color: #8ac351;
-        -webkit-clip-path: polygon(20% 0, 80% 0, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0 80%, 0 20%);
-        clip-path: polygon(20% 0, 80% 0, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0 80%, 0 20%);
         animation: msg 1s infinite alternate ease-in-out;
     }
     @keyframes msg {
