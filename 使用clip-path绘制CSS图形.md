@@ -217,7 +217,9 @@
 
 ## 制作有趣的效果
 
-### HTML
+### 探索
+
+#### HTML
 
     :::html
     <div id="dark">
@@ -233,7 +235,7 @@
         </div>
     </div>
 
-### CSS
+#### CSS
 
     :::css
     #dark {
@@ -250,7 +252,7 @@
     }
 
 
-### JS
+#### JS
 
     :::js
     let ring = document.querySelector('#ring')
@@ -291,14 +293,123 @@ In the Land of Mordor where the Shadows lie。</p>
 }
 </style>
 <script>
+let dark = document.querySelector('#dark')
 let ring = document.querySelector('#ring')
-ring.addEventListener('mousemove', (e) => {
+dark.addEventListener('mousemove', (e) => {
     let x = e.pageX
     let y = e.pageY
-    let ox = ring.offsetLeft
-    let oy = ring.offsetTop
+    let ox = dark.offsetLeft
+    let oy = dark.offsetTop
     let newPath = `circle(50px at ${x-ox}px ${y-oy}px)`
     ring.style['clip-path'] = newPath
+})
+</script>
+
+### 放大镜
+
+#### HTML
+
+    :::html
+    <div id="dark2">
+        <div id="ring2">
+            <h1>The Ring</h1><p>Three Rings for the Elven-kings under the sky,
+        Seven for the Dwarf-lords in their halls of stone,
+        Nine for Mortal Men doomed to die,
+        One for the Dark Lord on his dark throne
+        In the Land of Mordor where the Shadows lie.
+        One Ring to rule them all, One Ring to find them,
+        One Ring to bring them all, and in the darkness bind them,
+        In the Land of Mordor where the Shadows lie。</p>
+        </div>
+    </div>
+
+#### CSS
+
+    :::css
+    #dark2 {
+        background-color: #000;
+        position: relative;
+    }
+    #ring2, #ring2c{
+        background: #fff;
+        font-family: 'Times New Roman', Times, serif;
+        text-align: center;
+        white-space: pre;
+    }
+    #ring2c {
+        transform: scale(1.3);
+        transform-origin: 50% 50%;
+        -webkit-clip-path: circle(30px at 200px 100px);
+        clip-path: circle(50px at 200px 100px);
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+#### JS
+
+    :::js
+    let dark2 = document.querySelector('#dark2')
+    let ring2 = document.querySelector('#ring2')
+    let ring2c = ring.cloneNode(true)
+    ring2c.id = 'ring2c'
+    dark2.appendChild(ring2c)
+    dark2.addEventListener('mousemove', (e) => {
+        let x = e.pageX
+        let y = e.pageY
+        let ox = dark2.offsetLeft
+        let oy = dark2.offsetTop
+        let newPath = `circle(50px at ${x-ox}px ${y-oy}px)`
+        ring2c.style['clip-path'] = newPath
+    })
+
+<div id="dark2">
+<div id="ring2">
+    <h1>The Ring</h1><p>Three Rings for the Elven-kings under the sky,
+Seven for the Dwarf-lords in their halls of stone,
+Nine for Mortal Men doomed to die,
+One for the Dark Lord on his dark throne
+In the Land of Mordor where the Shadows lie.
+One Ring to rule them all, One Ring to find them,
+One Ring to bring them all, and in the darkness bind them,
+In the Land of Mordor where the Shadows lie。</p>
+</div>
+</div>
+<style>
+#dark2 {
+    background-color: #000;
+    position: relative;
+}
+#ring2, #ring2c{
+    background: #fff;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    white-space: pre;
+}
+#ring2c {
+    transform: scale(1.2);
+    transform-origin: 50% 50%;
+    -webkit-clip-path: circle(50px at 200px 100px);
+    clip-path: circle(50px at 200px 100px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+</style>
+<script>
+let dark2 = document.querySelector('#dark2')
+let ring2 = document.querySelector('#ring2')
+let ring2c = ring.cloneNode(true)
+ring2c.id = 'ring2c'
+dark2.appendChild(ring2c)
+dark2.addEventListener('mousemove', (e) => {
+    let x = e.pageX
+    let y = e.pageY
+    let ox = dark2.offsetLeft
+    let oy = dark2.offsetTop
+    let newPath = `circle(50px at ${x-ox}px ${y-oy}px)`
+    ring2c.style['clip-path'] = newPath
 })
 </script>
 
@@ -363,3 +474,4 @@ In the Land of Mordor where the Shadows lie。</p>
 - [clip-path](https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path)
 
 - [shape-outside](https://developer.mozilla.org/en-US/docs/Web/CSS/shape-outside)
+
