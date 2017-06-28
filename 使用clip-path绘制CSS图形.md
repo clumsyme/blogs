@@ -50,8 +50,8 @@
     :::css
     .demo2 {
         background-color: #f2c145;
-        -webkit-clip-path: polygon(50% 0, 100% 100%, 0 100%);
-        clip-path: polygon(50% 0, 100% 100%, 0 100%);
+        -webkit-clip-path: circle();
+        clip-path: circle();
     }
 
 
