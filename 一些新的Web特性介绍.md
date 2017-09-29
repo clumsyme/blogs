@@ -8,7 +8,7 @@
 
 #### Intersection Observer Demo（尝试滚动Demo到底部查看效果）
 
-`**Chrome >= 55, FireFox >= 55**`
+`Chrome >= 55, FireFox >= 55`
 
 <p data-height="400" data-theme-id="dark" data-slug-hash="EwXgjq" data-default-tab="result" data-user="liyan" data-embed-version="2" data-pen-title="IntersectionObserver scroll" class="codepen">See the Pen <a href="https://codepen.io/liyan/pen/EwXgjq/">IntersectionObserver scroll</a> by LiYan (<a href="https://codepen.io/liyan">@liyan</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
