@@ -22,7 +22,7 @@
 <p data-height="400" data-theme-id="dark" data-slug-hash="jGwMRo" data-default-tab="result" data-user="liyan" data-embed-version="2" data-pen-title="filter" class="codepen">See the Pen <a href="https://codepen.io/liyan/pen/jGwMRo/">filter</a> by LiYan (<a href="https://codepen.io/liyan">@liyan</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-`backdrop-filter`则可以实现将指定元素后边的元素都应用模糊效果，实现毛玻璃效果。只需将上述CSS代码的`filter`改为`backdrop-filter`。效果如下（目前在Chrome中需在[这里](chrome://flags/)找到`Experimental Web Platform Features`并启用来查看效果）：
+`backdrop-filter`则可以实现将指定元素后边的元素都应用模糊效果，实现毛玻璃效果。只需将上述CSS代码的`filter`改为`backdrop-filter`。效果如下（目前在Chrome中需在`chrome://flags/`找到`Experimental Web Platform Features`并启用来查看效果）：
 
 <p data-height="400" data-theme-id="dark" data-slug-hash="gGRLPB" data-default-tab="result" data-user="liyan" data-embed-version="2" data-pen-title="backdrop-filter" class="codepen">See the Pen <a href="https://codepen.io/liyan/pen/gGRLPB/">backdrop-filter</a> by LiYan (<a href="https://codepen.io/liyan">@liyan</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
