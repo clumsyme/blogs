@@ -27,4 +27,32 @@
 <p data-height="400" data-theme-id="dark" data-slug-hash="gGRLPB" data-default-tab="result" data-user="liyan" data-embed-version="2" data-pen-title="backdrop-filter" class="codepen">See the Pen <a href="https://codepen.io/liyan/pen/gGRLPB/">backdrop-filter</a> by LiYan (<a href="https://codepen.io/liyan">@liyan</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-## 待续
+## dynanmic import
+
+如何按需加载js文件？
+
+一个方法是动态创建`<script>`标签，或者使用类似[requirejs](http://requirejs.org/)这样的库。但是ecmascript标准是有`import`关键字的，正常是不应该绕这么多路的。好在现在一些浏览器(如Chrome)已经实现了[`dynamic import`](https://github.com/tc39/proposal-dynamic-import)（目前处于ecmascript proposal stage 3，也就是即将成为正式标准）。
+
+### 示例
+
+    :::html
+    <button id="dynamicImport">点击我动态加载</button>
+
+    <script>
+        document.getElementById('dynamicImport').addEventListener('click', async (event) => {
+            event.preventDefault()
+            const module = await import(`https://raw.githubusercontent.com/clumsyme/learn/d6f1db41122ca3b36068ba08ab8ed0e8686355b3/js/dynamicImport.js`);
+            module.introduce()
+        })
+    </script>
+
+点击下面按钮：
+<button id="dynamicImport">点击我动态加载</button>
+
+<script>
+    document.getElementById('dynamicImport').addEventListener('click', async (event) => {
+        event.preventDefault()
+        const module = await import(`https://raw.githubusercontent.com/clumsyme/learn/d6f1db41122ca3b36068ba08ab8ed0e8686355b3/js/dynamicImport.js`);
+        module.introduce()
+    })
+</script>
