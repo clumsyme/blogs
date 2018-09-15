@@ -1,5 +1,9 @@
 上一篇文章中，我们了解到了，页面首次渲染需要DOM和CSSOM都构建完成才能实现，也就是CSS会阻塞页面的首次渲染。那么外部JS、CSS文件的加载和DOM构建之间是如何相互影响的呢，我们将对此一探究竟。
 
+## 准备工作
+
+我们将使用一个express服务器，并延时返回请求。带有`delay-{n}.(css|js)`的文件将会在 `n * 100ms`后返回。整个项目源文件见[这里](https://github.com/clumsyme/page-loading)。
+
 ## 纯HTML文本
 
 ![纯html](https://raw.githubusercontent.com/clumsyme/blogs/master/imgs/page-load/raw-html.png)
@@ -87,3 +91,9 @@ CSS文件会延迟100ms返回，不过我们可以看到，`DOMContentLoad`事�
 - CSS会阻塞JS执行，从而阻塞DOM构建
 - `defer`属性的JavaScript加载、执行不会阻塞DOM构建，但是会阻塞`DOMContentLoad`事件触发
 - `async`属性的JavaScript加载不会阻塞DOM构建，也不会阻塞`DOMContentLoad`事件触发，但是其执行可能会阻塞DOM构建（如果其加载够快）。
+
+## 参考
+
+- [DOMContentLoaded](https://developer.mozilla.org/en-US/docs/Web/Events/DOMContentLoaded)
+- [Building the DOM faster: speculative parsing, async, defer and preload](https://hacks.mozilla.org/2017/09/building-the-dom-faster-speculative-parsing-async-defer-and-preload/)
+- [<script>: The Script element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script)
