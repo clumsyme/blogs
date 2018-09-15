@@ -52,7 +52,26 @@ CSS文件会延迟100ms返回，不过我们可以看到，`DOMContentLoad`事�
 
 ![js-faster.png](https://raw.githubusercontent.com/clumsyme/blogs/master/imgs/page-load/js-faster.png)
 
-在这种情况下，JavaScript文件在125ms时即加载完成，而`DOMContentLoad`事件仍然要等到226ms、CSS文件加载之后才出发。因此**上述推论是错误的**，DOM构建时间显然受到了CSS文件的加载时间影响。这是因为JavaScript存在修改CSSOM的可能性，因此JavaScript的解析、执行必须等到CSSOM构建完成之后才能执行，也就是说**CSS文件的加载本身并未阻塞DOM的构建，但是CSS文件的加载阻塞了JavaScript的解析与执行，而JavaScript是会阻塞DOM构建的，因此CSS文件的加载就引起了DOM的阻塞**。
+在这种情况下，JavaScript文件在125ms时即加载完成，而`DOMContentLoad`事件仍然要等到226ms、CSS文件加载之后才出发。因此**上述推论是错误的**，DOM构建时间显然受到了CSS文件的加载时间影响。这是因为JavaScript存在修改CSSOM的可能性，因此JavaScript的解析、执行必须等到CSSOM构建完成之后才能执行，也就是说**CSS文件的加载本身并未阻塞DOM的构建，但是CSS文件的加载阻塞了JavaScript的解析与执行，而JavaScript是会阻塞DOM构建的，因此CSS文件的加载就引起了DOM的阻塞**。Perforcemance面板分析如下：（JavaScript在下载完成后并没有获得执行）：
+
+![js-before-p.png](https://raw.githubusercontent.com/clumsyme/blogs/master/imgs/page-load/js-before-p.png)
+
+![js-before-p-e.png](https://raw.githubusercontent.com/clumsyme/blogs/master/imgs/page-load/js-before-p-e.png)
+
+
+## 将script置于link标签前边
+
+```html
+<link rel="stylesheet" href="delay-2.css" />
+<script src="delay-1.js" defer></script>
+```
+
+![js-before.png](https://raw.githubusercontent.com/clumsyme/blogs/master/imgs/page-load/js-before.png)
+
+这里我们会发现，JavaScript先于CSS进行加载，结果是CSS没有阻塞JavaScript的执行，JavaScript在加载完就获得了执行，之后就完成了DOM的构建。因此这种情况下，虽然CSS加载比JavaScript慢，CSS仍然没有阻塞DOM构建。Perforcemance面板分析如下：（JavaScript在下载完成后马上就获得了执行）：
+
+![js-before-p.png](https://raw.githubusercontent.com/clumsyme/blogs/master/imgs/page-load/js-before-p.png)
+
 
 ## 将JavaScript设置为defer
 
@@ -96,4 +115,4 @@ CSS文件会延迟100ms返回，不过我们可以看到，`DOMContentLoad`事�
 
 - [DOMContentLoaded](https://developer.mozilla.org/en-US/docs/Web/Events/DOMContentLoaded)
 - [Building the DOM faster: speculative parsing, async, defer and preload](https://hacks.mozilla.org/2017/09/building-the-dom-faster-speculative-parsing-async-defer-and-preload/)
-- [<script>: The Script element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script)
+- [`<script>`: The Script element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script)
