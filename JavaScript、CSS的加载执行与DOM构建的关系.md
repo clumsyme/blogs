@@ -62,8 +62,8 @@ CSS文件会延迟100ms返回，不过我们可以看到，`DOMContentLoad`事�
 ## 将script置于link标签前边
 
 ```html
-<link rel="stylesheet" href="delay-2.css" />
 <script src="delay-1.js" defer></script>
+<link rel="stylesheet" href="delay-2.css" />
 ```
 
 ![js-before.png](https://raw.githubusercontent.com/clumsyme/blogs/master/imgs/page-load/js-before.png)
