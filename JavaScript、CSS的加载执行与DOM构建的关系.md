@@ -52,7 +52,7 @@ CSS文件会延迟100ms返回，不过我们可以看到，`DOMContentLoad`事�
 
 ![js-faster.png](https://raw.githubusercontent.com/clumsyme/blogs/master/imgs/page-load/js-faster.png)
 
-在这种情况下，JavaScript文件在125ms时即加载完成，而`DOMContentLoad`事件仍然要等到226ms、CSS文件加载之后才出发。因此**上述推论是错误的**，DOM构建时间显然受到了CSS文件的加载时间影响。这是因为JavaScript存在修改CSSOM的可能性，因此JavaScript的解析、执行必须等到CSSOM构建完成之后才能执行，也就是说**CSS文件的加载本身并未阻塞DOM的构建，但是CSS文件的加载阻塞了JavaScript的解析与执行，而JavaScript是会阻塞DOM构建的，因此CSS文件的加载就引起了DOM的阻塞**。Perforcemance面板分析如下：（JavaScript在下载完成后并没有获得执行）：
+在这种情况下，JavaScript文件在125ms时即加载完成，而`DOMContentLoad`事件仍然要等到226ms、CSS文件加载之后才出发。因此**上述推论是错误的**，DOM构建时间显然受到了CSS文件的加载时间影响。这是因为JavaScript存在修改CSSOM的可能性，因此JavaScript的解析、执行必须等到CSSOM构建完成之后才能执行，也就是说**CSS文件的加载本身并未阻塞DOM的构建，但是CSS文件的加载阻塞了JavaScript的解析与执行，而JavaScript是会阻塞DOM构建的，因此CSS文件的加载就引起了DOM的阻塞**。Perforcemance面板分析如下：（JavaScript在下载完成后并没有获得执行，而是等到CSS下载完成后才开始至此执行）：
 
 ![js-before-p.png](https://raw.githubusercontent.com/clumsyme/blogs/master/imgs/page-load/js-before-p.png)
 
