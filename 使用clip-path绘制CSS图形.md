@@ -6,9 +6,9 @@
 
 #### HTML
 
-    :::html
-    <div class="clip demo1"></div>
-
+```html
+<div class="clip demo1"></div>
+```
 
 #### CSS
 
@@ -41,9 +41,9 @@
 
 #### HTML
 
-    :::html
-    <div class="clip demo2"></div>
-
+```html
+<div class="clip demo2"></div>
+```
 
 #### CSS
 
@@ -68,8 +68,9 @@
 
 #### HTML
 
-    :::html
-    <div class="clip demo3"></div>
+```html
+<div class="clip demo3"></div>
+```
 
 
 #### CSS
@@ -96,9 +97,9 @@
 
 #### HTML
 
-    :::html
-    <div class="clip demo4"></div>
-
+```html
+<div class="clip demo4"></div>
+```
 
 #### CSS
 
@@ -125,9 +126,9 @@
 
 #### HTML
 
-    :::html
-    <div class="clip demo4"></div>
-
+```html
+<div class="clip demo4"></div>
+```
 
 #### CSS
 
@@ -170,9 +171,9 @@
 
 #### HTML
 
-    :::html
-    <div class="clip demo6"></div>
-
+```html
+<div class="clip demo6"></div>
+```
 
 #### CSS
 
@@ -217,19 +218,20 @@
 
 #### HTML
 
-    :::html
-    <div id="dark">
-        <div id="ring">
-            <h1>The Ring</h1><p>Three Rings for the Elven-kings under the   sky,
-            Seven for the Dwarf-lords in their halls of stone,
-            Nine for Mortal Men doomed to die,
-            One for the Dark Lord on his dark throne
-            In the Land of Mordor where the Shadows lie.
-            One Ring to rule them all, One Ring to find them,
-            One Ring to bring them all, and in the darkness bind them,
-            In the Land of Mordor where the Shadows lie。</p>
-        </div>
+```html
+<div id="dark">
+    <div id="ring">
+        <h1>The Ring</h1><p>Three Rings for the Elven-kings under the   sky,
+        Seven for the Dwarf-lords in their halls of stone,
+        Nine for Mortal Men doomed to die,
+        One for the Dark Lord on his dark throne
+        In the Land of Mordor where the Shadows lie.
+        One Ring to rule them all, One Ring to find them,
+        One Ring to bring them all, and in the darkness bind them,
+        In the Land of Mordor where the Shadows lie。</p>
     </div>
+</div>
+```
 
 #### CSS
 
@@ -305,19 +307,20 @@ dark.addEventListener('mousemove', (e) => {
 
 #### HTML
 
-    :::html
-    <div id="dark2">
-        <div id="ring2">
-            <h1>The Ring</h1><p>Three Rings for the Elven-kings under the sky,
-        Seven for the Dwarf-lords in their halls of stone,
-        Nine for Mortal Men doomed to die,
-        One for the Dark Lord on his dark throne
-        In the Land of Mordor where the Shadows lie.
-        One Ring to rule them all, One Ring to find them,
-        One Ring to bring them all, and in the darkness bind them,
-        In the Land of Mordor where the Shadows lie。</p>
-        </div>
+```html
+<div id="dark2">
+    <div id="ring2">
+        <h1>The Ring</h1><p>Three Rings for the Elven-kings under the sky,
+    Seven for the Dwarf-lords in their halls of stone,
+    Nine for Mortal Men doomed to die,
+    One for the Dark Lord on his dark throne
+    In the Land of Mordor where the Shadows lie.
+    One Ring to rule them all, One Ring to find them,
+    One Ring to bring them all, and in the darkness bind them,
+    In the Land of Mordor where the Shadows lie。</p>
     </div>
+</div>
+```
 
 #### CSS
 
@@ -417,19 +420,20 @@ dark2.addEventListener('mousemove', (e) => {
 
 `shape-outsized`属性与`clip-path`相似，都可以剪切除一定的图形。不过`shape-outsized`主要与`float`属性配合使用，使文字围绕浮动元素剪切过的路径而不是浮动元素的边缘。
 
-    :::html
-    <div>
-        <div id="float"></div>
-        <p id="p">Three Rings for the Elven-kings under the sky,
-            Seven for the Dwarf-lords in their halls of stone,
-            Nine for Mortal Men doomed to die,
-            One for the Dark Lord on his dark throne
-            In the Land of Mordor where the Shadows lie.
-            One Ring to rule them all, One Ring to find them,
-            One Ring to bring them all, and in the darkness bind them,
-            In the Land of Mordor where the Shadows lie。
-        </p>
-    </div>
+```html
+<div>
+    <div id="float"></div>
+    <p id="p">Three Rings for the Elven-kings under the sky,
+        Seven for the Dwarf-lords in their halls of stone,
+        Nine for Mortal Men doomed to die,
+        One for the Dark Lord on his dark throne
+        In the Land of Mordor where the Shadows lie.
+        One Ring to rule them all, One Ring to find them,
+        One Ring to bring them all, and in the darkness bind them,
+        In the Land of Mordor where the Shadows lie。
+    </p>
+</div>
+```
 
 ### CSS
 

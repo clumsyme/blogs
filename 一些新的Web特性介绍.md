@@ -35,16 +35,17 @@
 
 ### 示例
 
-    :::html
-    <button id="dynamicImport">点击我动态加载</button>
+```html
+<button id="dynamicImport">点击我动态加载</button>
 
-    <script>
-        document.getElementById('dynamicImport').addEventListener('click', async (event) => {
-            event.preventDefault()
-            const module = await import(`https://raw.githubusercontent.com/clumsyme/learn/d6f1db41122ca3b36068ba08ab8ed0e8686355b3/js/dynamicImport.js`);
-            module.introduce()
-        })
-    </script>
+<script>
+    document.getElementById('dynamicImport').addEventListener('click', async (event) => {
+        event.preventDefault()
+        const module = await impor(`https://raw.githubusercontent.com/clumsyme/learn/d6f1db41122ca3b36068ba08ab8ed0e8686355b3/js/dynamicImport.js`);
+        module.introduce()
+    })
+</script>
+```
 
 点击下面按钮：
 <button id="dynamicImport">点击我动态加载</button>

@@ -161,13 +161,15 @@ bind()方法返回一个新的函数，函数体与函数相同，但`this`被�
 
 ### 行内事件处理函数中的`this`
 
-    :::html
-    <button onclick="alert(this)">Click</buttom>
+```html
+<button onclick="alert(this)">Click</buttom>
+```
 
 上述代码的`this`指向`<button>` DOM对象。
 注意只有外层的`this`被如此设置。
 
-    :::html
-    <button onclick="alert((function(){return this})())"
+```html
+<button onclick="alert((function(){return this})())"
+```
 
 上述代码的`this`未指定所以其值默认为全局对象(window / global)。

@@ -1,6 +1,6 @@
 ## 为什么使用 CSS Variables
 
-在开发一个 Web 应用的时候，经常需要为许多元素设置属性（如`color`、`width`、`height`）等，即使很多元素具有相同的属性，我们还是要为每个元素单独设置属性。这样一旦应用更改主题，比如更改主色调，那么要为每一个元素一个一个地修改，为什么不能像大部分编程语言一样，定义一个变量，用这个变量得引用来设置对象（元素）的属性？这样只需要修改变量值就可以修改所有的属性值了。CSS Variables 就是做这个的。
+在开发一个 Web 应用的时候，经常需要为许多元素设置属性（如`color`、`width`、`height`）等，即使很多元素具有相同的属性，我们还是要为每个元素单独设置属性。这样一旦应用更改主题，比如更改主色调，那么要为每一个元素一个一个地修改，为什么不能像大部分编程语言一样，定义一个变量，用这个变量来设置对象（元素）的属性？这样只需要修改变量值就可以修改所有的属性值了。CSS Variables 就是做这个的。
 
 ## 为什么不用SASS/LESS
 
@@ -30,8 +30,9 @@ CSS:
 
 HTML：
 
-    :::html
-    <p> class='cv-test'>May The force be with you.</p>
+```html
+<p class='cv-test'>May The force be with you.</p>
+```
 
 结果：
 
@@ -76,23 +77,24 @@ CSS:
     @media (max-width: 1000px) {
         :root {
             --text-color: lime
+        }
     }
-}
 
 HTML:
 
-    :::html
-    <p class='cv-test'>My name is Ozymandias</p>
+```html
+<p class='cv-test'>My name is Ozymandias</p>
 
-    <div class='scopeone'>
-        <p class='cv-test'>
-            <span>King<span> of kings
-        </p>
-    </div>
+<div class='scopeone'>
+    <p class='cv-test'>
+        <span>King<span> of kings
+    </p>
+</div>
 
-    <div class='scopetwo'>
-        <p class='cv-test'>Look on my works</p>
-    </div>
+<div class='scopetwo'>
+    <p class='cv-test'>Look on my works</p>
+</div>
+```
 
 <style>
 .scopeone {
@@ -150,8 +152,9 @@ CSS:
 
 HTML:
 
-    :::html
-    <p class='scopethree'>One ring to tule them all</p>
+```html
+<p class='scopethree'>One ring to rule them all</p>
+```
 
 <style>
 .scopethree {
@@ -199,8 +202,9 @@ CSS:
 
 HTML:
 
-    :::html
-    <p class='scopefour'>One ring to find them</p>
+```html
+<p class='scopefour'>One ring to find them</p>
+```
 
 <style>
 .scopefour {
@@ -238,33 +242,33 @@ HTML:
 
 实例：
 
-    :::html
-    <p class='cv-test'>one ring to rule them all</p>
-    <p class='cv-test2'>one ring to find them</p>
-    <p class='cv-test3'>one ring to rule them all</p>
-    <p class='cv-test4'>and in the darkness bind them</p>
-    <button id='topurple'>紫色</button>
-    <button id='toskyblue'>天蓝色</button>
-    <style>
-        cv-test2 {
-            color: var(--text-color)
-        }
-        cv-test3 {
-            color: var(--text-color)
-        }
-        cv-test4 {
-            color: var(--text-color)
-        }
-    </style>
-    <script>
-        document.getElementById('topurple').addEventListener('click', () => {
-            document.documentElement.style.setProperty('--text-color', 'purple');
-        })
-        document.getElementById('toskyblue').addEventListener('click', () => {
-            document.documentElement.style.setProperty('--text-color', 'var(--backup-color)');
-        })
-    </script>
-
+```html
+<p class='cv-test'>one ring to rule them all</p>
+<p class='cv-test2'>one ring to find them</p>
+<p class='cv-test3'>one ring to bring them all</p>
+<p class='cv-test4'>and in the darkness bind them</p>
+<button id='topurple'>紫色</button>
+<button id='toskyblue'>天蓝色</button>
+<style>
+    cv-test2 {
+        color: var(--text-color)
+    }
+    cv-test3 {
+        color: var(--text-color)
+    }
+    cv-test4 {
+        color: var(--text-color)
+    }
+</style>
+<script>
+    document.getElementById('topurple').addEventListener('click', () => {
+        document.documentElement.style.setProperty('--text-color', 'purple');
+    })
+    document.getElementById('toskyblue').addEventListener('click', () => {
+        document.documentElement.style.setProperty('--text-color', 'var(--backup-color)');
+    })
+</script>
+```
 
 结果：
 
@@ -272,7 +276,7 @@ HTML:
 
 <p class='cv-test'>one ring to rule them all</p>
 <p class='cv-test2'>one ring to find them</p>
-<p class='cv-test3'>one ring to rule them all</p>
+<p class='cv-test3'>one ring to bring them all</p>
 <p class='cv-test4'>and in the darkness bind them</p>
 <button id='topurple'>紫色</button>
 <button id='toskyblue'>天蓝色</button>
