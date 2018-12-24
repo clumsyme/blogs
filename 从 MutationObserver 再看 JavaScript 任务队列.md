@@ -19,7 +19,7 @@ const callback = (mutationsList, observer) => {
 
 ### 演示 1
 
-<p data-height="265" data-theme-id="0" data-slug-hash="LMWGKJ" data-default-tab="js,result" data-user="liyan" data-pen-title="React WaterMark Component" class="codepen">See the Pen <a href="https://codepen.io/liyan/pen/LMWGKJ/">React WaterMark Component</a> by LiYan (<a href="https://codepen.io/liyan">@liyan</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="400" data-theme-id="0" data-slug-hash="LMWGKJ" data-default-tab="js,result" data-user="liyan" data-pen-title="React WaterMark Component" class="codepen">See the Pen <a href="https://codepen.io/liyan/pen/LMWGKJ/">React WaterMark Component</a> by LiYan (<a href="https://codepen.io/liyan">@liyan</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
 ## 2. 监测 `oldValue`，任何属性修改都将属性值重置为 `oldValue`
@@ -37,7 +37,7 @@ const callback = (mutationsList, observer) => {
 
 ### 演示 2
 
-<p data-height="265" data-theme-id="0" data-slug-hash="vvmdVo" data-default-tab="js,result" data-user="liyan" data-pen-title="WaterMark use oldValue" class="codepen">See the Pen <a href="https://codepen.io/liyan/pen/vvmdVo/">WaterMark use oldValue</a> by LiYan (<a href="https://codepen.io/liyan">@liyan</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="400" data-theme-id="0" data-slug-hash="vvmdVo" data-default-tab="js,result" data-user="liyan" data-pen-title="WaterMark use oldValue" class="codepen">See the Pen <a href="https://codepen.io/liyan/pen/vvmdVo/">WaterMark use oldValue</a> by LiYan (<a href="https://codepen.io/liyan">@liyan</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
 方法 2 与方法 1 相比，可以重置任何属性的改变，而方法 1 只能重置我们指定的几个属性。看起来方法 2 是更好的选项，事实如此吗？
