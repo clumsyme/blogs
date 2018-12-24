@@ -69,7 +69,7 @@ onClick = () => {
 ```javascript
 watermark.style.display = 'none'
 ```
-`style.display` 由 `block` 改变为`none`，这里会在微任务队列内推入一个微任务（MutationObserver callback， 其中 oldValue 为 `block`）。
+`style.display` 由 `block` 改变为`none`，这里会在微任务队列内推入一个微任务（MutationObserver callback， 其 mutationList 有一个 [MutationRecord](https://developer.mozilla.org/en-US/docs/Web/API/MutationRecord)，其 oldValue 为 `display: block`）。
 
 ### click 任务继续运行
 
@@ -77,12 +77,13 @@ watermark.style.display = 'none'
 watermark.style.display = 'block'
 ```
 
-`style.display` 由 `none` 改变为`block`，这里会在微任务队列内推入 另一个微任务（MutationObserver callback， 其中 oldValue 为 `none`）。
+`style.display` 由 `none` 改变为`block`，这里和 Promise 不同的是，因为该 MutationObserver 已经有一个 callback 在微任务队列内了，不会再次推入一个新的微任务，而只是将一个新的 MutationRecord 推入 mutationList，该 MutationRecord 的 oldValue 为 `display: none`）。
 
 ### click 任务运行完成，开始运行微任务
 
-- 微任务 1 开始运行，`style` 属性恢复到 `oldValue`，`display` 重置为 `block`；
-- 微任务 2 开始运行，`style` 属性恢复到 `oldValue`，`display` 重置为 `none`；
+- 微任务 mutation callback 开始运行， 循环 mutationList：
+    - 第一个 MutationRecord 使 `style` 属性恢复到 `oldValue`，`display` 重置为 `block`；
+    - 第二个 MutationRecord 使 `style` 属性恢复到 `oldValue`，`display` 重置为 `none`；
 
 由此就实现了水印的隐藏。
 
@@ -93,14 +94,12 @@ watermark.style.display = 'block'
 click:
 - 任务开始
     - watermark.style.display = 'none'
-        - `style` 由 `display: block` -> `display: none`，MutationObserver 入队 callback 1，其中 oldValue 为 `display: block`
+        - `style` 由 `display: block` -> `display: none`，MutationObserver 入队微任务 callback， mutationList 有一个 MutationRecord，其 oldValue 为 `display: block`
     - watermark.style.display = 'block'
-        - `style` 由 `display: none` -> `display: block`，MutationObserver  再次入队 callback 2，其中 oldValue 为 `display: none`
-- 任务运行结束,开始微任务队列
-    - callback 1
-        - 恢复 oldValue：`display: block`
-    - callback 2
-        - 恢复 oldValue：`display: none`
+        - `style` 由 `display: none` -> `display: block`，MutationObserver callback 已存在，会推入一个新的 MutationRecord 到 mutationList，其 oldValue 为 `display: none`
+- 任务运行结束,开始微任务队列，执行 callback
+    - mutationRecord 1：恢复 oldValue：`display: block`
+    - mutationRecord 2：恢复 oldValue：`display: none`
 
 所以我们的方法 1 虽然只能锁定几个指定的属性，但是在任何情况下属性都会重置为初始值，因此可以实现对属性的真正锁定。
 
