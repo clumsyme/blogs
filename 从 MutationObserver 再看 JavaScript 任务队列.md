@@ -42,7 +42,7 @@ const callback = (mutationsList, observer) => {
 
 方法 2 与方法 1 相比，可以重置任何属性的改变，而方法 1 只能重置我们指定的几个属性。看起来方法 2 是更好的选项，事实如此吗？
 
-注意演示 2 的 `hide` 与 `show` 按钮，点击发现，可以改变水印的  `style` 属性实现水印隐藏，其中 `hide` 按钮的时间处理函数为：
+注意演示 2 的 `hide` 与 `show` 按钮，点击发现，可以改变水印的  `style` 属性实现水印隐藏，其中 `hide` 按钮的事件处理函数为：
 
 ```javascript
 onClick = () => {
