@@ -151,7 +151,7 @@ firstWorkInProgressHook
 - 初次渲染的时候，Hooks 链表为空，每次 `useState()` 的时候都会新建一个 Hooks 作为当前的 Hooks（workInProgressHook）
 - 再次渲染的时候，按照调用顺序，依次取上次生成的 Hooks 链表各个节点（每个节点就是一个 Hooks）
 
-这也是为什么我们需要保证在每次渲染的时候各个 Hooks 以相同的顺序被调用。
+这也是为什么我们需要保证在每次渲染的时候各个 Hooks 以相同的顺序被调用，也是为什么不要在 `if` 内使用 Hooks 的原因：这会导致 Hooks 调用顺序不同。
 
 ### ps
 
