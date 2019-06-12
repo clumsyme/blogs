@@ -22,7 +22,7 @@ GitHub 上有一些项目，专门用来总结“你可能不需要 XXX”，比
 - [You-Dont-Need-Momentjs](https://github.com/you-dont-need/You-Dont-Need-Momentjs)
 - [You-Dont-Need-Lodash-Underscore](https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore)
 
-我们再以 moment 为例，moment 是一个非常强大，同时也非常 API 友好的项目，它既能够方便地解决我们的问题。但是如果我们统计一下，就会发现，我们最常用到的 moment 功能，可能不超过 5 个。但是 moment 打包体积有 329KB，即使 GZip 压缩之后，仍然有 69.6KB。而那几个最常用的功能如果我们自己来实现的话，可能体积会缩小几十到上百倍，这时候更好的方案可能就是不引入 moment（当然这只是理想情况，比如我们用到了 antd，antd 的一些组件会依赖于 moment，那我们还是需要引入 moment）。
+我们再以 moment 为例，moment 是一个非常强大，同时也非常 API 友好的项目，它能够方便地解决我们的问题。但是如果我们统计一下，就会发现，我们最常用到的 moment 功能，可能不超过 5 个。但是 moment 打包体积有 329KB，即使 GZip 压缩之后，仍然有 69.6KB。而那几个最常用的功能如果我们自己来实现的话，可能体积会缩小几十到上百倍，这时候更好的方案可能就是不引入 moment（当然这只是理想情况，比如我们用到了 antd，antd 的一些组件会依赖于 moment，那我们还是需要引入 moment）。
 
 ## 2. 当我们确实需要一个 package 时，我们应该考虑的因素
 
@@ -60,6 +60,12 @@ Contributors 越多，说明社区力量越强大，项目可维护性更好。
 #### 体积（越小越好）
 
 对于 Web 应用来说，代码体积至关重要，它影响页面渲染时间，进而影响用户体验。所以要尽量选择较小的库。
+
+#### 开源许可协议
+
+如果软件涉及商用的话，那就需要了解 MIT、BSD、Apache、GPL 等开源协议的区别。
+
+[Choose an open source license](https://choosealicense.com/)
 
 ### 复杂性
 
