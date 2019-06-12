@@ -39,7 +39,7 @@ GitHub 上有一些项目，专门用来总结“你可能不需要 XXX”，比
 
 #### Issues / Pull Requests（越少，Open/Close 比越小越好）
 
-Issue 数值越低，说明存在问题的可能越小。另外由于不同项目流行度的差异，看 Issues 的 Open/Close 比值更能说明问题。比值越小说明作者维护项目的意愿越大，出了问题更可能被解决。
+Issue 数值越低，说明存在问题的可能越小。另外由于不同项目流行度的差异，看 Issues 的 Open/Close 比值更能说明问题。比值越小说明作者维护项目的意愿越强，出了问题更可能被解决。
 
 Pull Requests 同理。
 
