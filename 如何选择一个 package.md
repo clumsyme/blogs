@@ -43,7 +43,7 @@ Issue 数值越低，说明存在问题的可能越小。另外由于不同项�
 
 Pull Requests 同理。
 
-#### Contributors 贡献值数量（越多越好）
+#### Contributors 贡献者数量（越多越好）
 
 Contributors 越多，说明社区力量越强大，项目可维护性更好。
 
