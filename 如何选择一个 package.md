@@ -75,4 +75,4 @@ Contributors 越多，说明社区力量越强大，项目可维护性更好。
 - 不知道怎样快速上手
 - 接入十分复杂，需要改我们的很多代码，甚至其他第三方代码
 
-一个例子是关于我们如何舍弃 [react-hot-loader](https://github.com/gaearon/react-hot-loader/releases) 的。该项目是著名的 Dan Abramov 开发的项目。现在由社区维护版本升级。直到 React 18 发布之后，它与 React Hooks 不兼容，以至于要想使其正常工作需要在开发时舍弃 React 官方的 `React-Dom` 而采用他们维护的 `React-Dom` 版本。即使如此，经过复杂的配置之后，我还是没能让它顺利正确地工作起来，所以最后只能舍弃了它。
+一个例子是关于我们如何舍弃 [react-hot-loader](https://github.com/gaearon/react-hot-loader/releases) 的。该项目是著名的 Dan Abramov 开发的，现在由社区维护版本升级。直到 React 18 发布之后，它与 React Hooks 不兼容，以至于要想使其正常工作需要在开发时舍弃 React 官方的 `React-Dom` 而采用他们维护的 `React-Dom` 版本。即使如此，经过复杂的配置之后，我还是没能让它顺利正确地工作起来，所以最后只能舍弃了它。
