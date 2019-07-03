@@ -63,10 +63,10 @@ def is_prime(n):
 # 生成一个随机的大质数(介于 10^100 与 10^110 之间)
 def generate_prime():
     while True:
-        expectNumber = random.randint(1E100, 1E110)
-        if is_prime(expectNumber):
+        expect_number = random.randint(1E100, 1E110)
+        if is_prime(expect_number):
             break
-    return expectNumber
+    return expect_number
 ```
 
 ### 生成 p、q、N、L：
