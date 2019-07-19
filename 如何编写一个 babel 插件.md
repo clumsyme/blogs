@@ -88,7 +88,7 @@ class ScenicPoint {
 
 class Park extends ScenicPoint { }
 
-class NeedTicket extends ScenicPoint { }
+class Museum extends ScenicPoint { }
 
 // 我们的城市
 class City {
@@ -106,7 +106,6 @@ class City {
 // visitors: Alice 与 Bob
 let Alice = {
     name: 'Alice',
-    boughtTicket: true,
     visit(scenicPoint) {
         if (scenicPoint instanceof Park) {
             console.log(`${scenicPoint.name} is a wonderful park~`)
@@ -117,7 +116,6 @@ let Alice = {
 }
 let Bob = {
     name: 'Bob',
-    boughtTicket: false,
     visit(scenicPoint) {
         if (!(scenicPoint instanceof Park)) {
             console.log(`I want to go to some park.`)
@@ -128,7 +126,7 @@ let Bob = {
 }
 
 let BeiJing = new City('BeiJing', [
-    new NeedTicket('故宫'),
+    new Museum('故宫'),
     new ScenicPoint('国家博物馆'),
     new Park('玉渊潭公园'),
 ])
