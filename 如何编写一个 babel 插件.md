@@ -72,6 +72,8 @@ Node {
 
 具体来说，我们的 AST 的每一个 Node 有一个 accept 方法，当我们用一个 visitor 来遍历我们的 AST 时，每遍历到一个 Node 就会调用这个 Node 的 accept 方法来 `接待` 这个 visitor，而在 accept 方法内，我们会回调 visitor 的 visit 方法。我们来用访问者模式来实现一个 `旅行者访问城市景点` 的逻辑。
 
+*实际上 Node 是有两个方法，enter 和 exit，指遍历进入和离开 Node 的时候。通常访问者的 visit 方法会在 enter 内被调用。*
+
 ```js
 // 旅游景点
 class ScenicPoint {
