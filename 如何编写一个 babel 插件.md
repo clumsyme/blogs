@@ -306,7 +306,7 @@ var button = _react.default.createElement(Button, {
 
 ## 我应该使用这个插件吗？
 
-这个插件已经发布到 npm，不过请注意，该插件只是一个实验性的插件，而且它的结果很反模式。如果在项目中确实需要为组件自动添加属性，请使用[组合组件](https://zh-hans.reactjs.org/docs/components-and-props.html#composing-components)。
+这个插件已经发布到 npm，不过请注意，该插件只是一个实验性的插件，而且它的结果很反模式。如果在项目中确实需要为组件自动添加属性，请使用[特例关系组件](https://zh-hans.reactjs.org/docs/composition-vs-inheritance.html#specialization)。
 
 ```jsx
 class SmallButton extends Component {
