@@ -117,18 +117,18 @@ let Alice = {
 let Bob = {
     name: 'Bob',
     visit(scenicPoint) {
-        if (!(scenicPoint instanceof Park)) {
-            console.log(`I want to go to some park.`)
+        if (!(scenicPoint instanceof Museum)) {
+            console.log(`I want to go to some Museum.`)
         } else {
-            console.log(`${scenicPoint.name} is a wonderful park~`)
+            console.log(`${scenicPoint.name} is a wonderful Museum~`)
         }
     }
 }
 
 let BeiJing = new City('BeiJing', [
-    new Museum('故宫'),
     new ScenicPoint('国家博物馆'),
     new Park('玉渊潭公园'),
+    new Museum('故宫'),
 ])
 ```
 
@@ -136,14 +136,14 @@ let BeiJing = new City('BeiJing', [
 
 ```js
 BeiJing.accept(Alice)
+// Alice visiting 国家博物馆
 // 玉渊潭公园 is a wonderful park~
 // Alice visiting 故宫
-// Alice visiting 国家博物馆
 
 BeiJing.accept(Bob)
-// I want to go to some park.
-// I want to go to some park.
-// 玉渊潭公园 is a wonderful park~
+// I want to go to some Museum.
+// I want to go to some Museum.
+// 故宫 is a wonderful Museum~
 ```
 
 可以发现，我们可以自定义 visitor 的 visit 方法，针对不同的景点实现不同的逻辑。
