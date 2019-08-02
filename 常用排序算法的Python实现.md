@@ -127,8 +127,8 @@ O(n) = nlogn
         current = left
         sortedTable = []
         while current <= right:
-            # 如果右侧表已全部归并完成 或 左侧表最小项小于右侧表最小项
-            if j > right or (table[i]<table[j]):
+            # 如果右侧表已全部归并完成 或 左侧表最小项小于右侧表最小项，且左侧表还未归并完成
+            if j > right or (table[i]<table[j]) and i <= middle:
                 sortedTable.append(table[i])
                 i += 1
             else:
