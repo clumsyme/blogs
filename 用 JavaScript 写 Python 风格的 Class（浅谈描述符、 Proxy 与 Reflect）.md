@@ -42,7 +42,7 @@ Python 中的 `self` 是明确传参，明确引用，所以我们在任何时�
 
 [Python 中的描述符](https://docs.python.org/3/howto/descriptor.html)就是一个实现了`__get__`/`__set__`/`__delete__`方法的对象。JavaScript 中的描述符则可以具有 `configurable	enumerable	value	writable	get	set` 等属性，分别构造出**数据描述符**/**存取描述符**。
 
-我们来描述符来使 `bark` 方法成为一个绑定了实例参数的方法。
+我们来使用描述符来使 `bark` 方法成为一个绑定了实例参数的方法。
 
 ```js
 class Dog {
@@ -134,22 +134,22 @@ proxiedSnoopy.bark()
 
 看起来我们不必为每个属性定义操作符了，而且我们调用 `proxiedTom.bark` 时不管 bark 方法在 tom 自己身上还是在其原型身上，都不会触发无限递归查找了：`proxiedTom.bark --proxy--> Reflect.get(tom, 'bark') -> bark method`
 
-但是我们需要为每一个实例生成它的代理对象。可不可以在 `new Dog` 的时候就返回生成的代理对象呢？只需要代理 Dog 的 contruct 行为即可。
+但是我们需要为每一个实例生成它的代理对象。可不可以在 `new Dog` 的时候就返回生成的代理对象呢？只需要代理 Dog 的 construct 行为即可。
 
 ```js
-class Cat {
+class Dog {
     constructor(name) {
         this.name = name
     }
-    mew(self) {
-        console.log('Mew~', self.name)
+    bark(self) {
+        console.log('Wang~', self.name)
     }
     eat(self, food) {
         console.log(self.name, 'eat', food)
     }
 }
 
-let contructHandler = {
+let constructHandler = {
     // target: 目标对象
     // argumentsList: 参数列表
     // newTarget: 最初被调用来构造的函数，如代理对象
@@ -161,26 +161,27 @@ let contructHandler = {
     }
 }
 
-let ProxiedCat = new Proxy(Cat, contructHandler)
+let ProxiedDog = new Proxy(Dog, constructHandler)
 
-let tom = new ProxiedCat('Tom')
-tom.mew()
-// Mew~ Tom
+let tom = new ProxiedDog('Tom')
 
-let kitty = new ProxiedCat('Kitty')
+tom.bark()
+// Wang~ Tom
 
-kitty.mew()
-// Mew~ Kitty
+let snoopy = new ProxiedDog('Snoopy')
 
-kitty.eat('milk')
-// Kitty eat milk
+snoopy.bark()
+// Wang~ Snoopy
 
-kitty.name
-// 'Kitty'
+snoopy.eat('milk')
+// Snoopy eat milk
 
-kitty.tomsmew()
-kitty.tomsmew = tom.mew
-// Mew~ Tom
+snoopy.name
+// 'Snoopy'
+
+snoopy.tomsbark = tom.bark
+snoopy.tomsbark()
+// Wang~ Tom
 ```
 
 ## 那么 Reflect 又是什么？
@@ -205,10 +206,10 @@ let tommy = Object.defineProperty(tom, 'age', {
 tom === tommy
 // true
 
-let kitty = {
-    name: 'kitty'
+let snoopy = {
+    name: 'snoopy'
 }
-let result = Reflect.defineProperty(kitty, 'age', {
+let result = Reflect.defineProperty(snoopy, 'age', {
     get() { 
         return 3
     }
@@ -220,7 +221,7 @@ result === true
 
 关于 Reflect 提供的方法与 Object 的方法的具体不同，可以参考[这个表格](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect/Comparing_Reflect_and_Object_methods)。
 
-Reflect 鱼 Object 相比的另一个有用的地方是，在对象设置了 getter 的时候，Reflect 可以很好地处理这种情况。
+Reflect 与 Object 相比的另一个有用的地方是，在对象设置了 getter 的时候，Reflect 可以很好地处理这种情况。
 
 ```js
 // 比如我们有一个会员对象
