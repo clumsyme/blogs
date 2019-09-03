@@ -257,10 +257,10 @@ export default function() {
                 // 如果组件原本 props 为空，我们直接将我们的自定义属性作为属性参数
                 if (types.isNullLiteral(propsExpression)) {
                     path.node.arguments[1] = extraPropsExpression
-                } else {
-                // 否则，我们将我们的自定义属性与原属性进行合并
+                } else if (types.isObjectExpression(propsExpression)) {
+                // 否则，我们将我们的自定义属性与原属性进行合并（只处理对象类型的 props）
                     path.node.arguments[1] = types.objectExpression(
-                        (<types.ObjectExpression>propsExpression).properties.concat(
+                        propsExpression.properties.concat(
                             (<types.ObjectExpression>extraPropsExpression).properties,
                         ),
                     )
