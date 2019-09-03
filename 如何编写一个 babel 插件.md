@@ -2,11 +2,11 @@
 
 webpack 处理 React 文件（js/jsx）使用 babel-loader，babel 就是我们的 JavaScript 编译器，它接收我们的源代码作为输入，产出编译后的可运行于浏览器的目标代码作为输出。babel 支持插件（plugin），可以视作编译器前端与后端之间的中间件：前端根据源代码生成抽象语法树（AST）等，后端根据抽象语法树生成目标代码，而插件作为中间件则是在生成目标代码之前对抽象语法树做相应的修改。
 
-- [基础概念](#%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5)
-  - [抽象语法树](#%E6%8A%BD%E8%B1%A1%E8%AF%AD%E6%B3%95%E6%A0%91)
-  - [访问者模式](#%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F)
-- [插件编写](#%E6%8F%92%E4%BB%B6%E7%BC%96%E5%86%99)
-- [我应该使用这个插件吗？](#%E6%88%91%E5%BA%94%E8%AF%A5%E4%BD%BF%E7%94%A8%E8%BF%99%E4%B8%AA%E6%8F%92%E4%BB%B6%E5%90%97)
+- [基础概念](#%e5%9f%ba%e7%a1%80%e6%a6%82%e5%bf%b5)
+  - [抽象语法树](#%e6%8a%bd%e8%b1%a1%e8%af%ad%e6%b3%95%e6%a0%91)
+  - [访问者模式](#%e8%ae%bf%e9%97%ae%e8%80%85%e6%a8%a1%e5%bc%8f)
+- [插件编写](#%e6%8f%92%e4%bb%b6%e7%bc%96%e5%86%99)
+- [我应该使用这个插件吗？](#%e6%88%91%e5%ba%94%e8%af%a5%e4%bd%bf%e7%94%a8%e8%bf%99%e4%b8%aa%e6%8f%92%e4%bb%b6%e5%90%97)
 
 ## 基础概念
 
@@ -222,6 +222,8 @@ export default function() {
                 if (
                     !(
                         types.isMemberExpression(callee) &&
+                        types.isIdentifier(callee.object) &&
+                        callee.object.name === 'React' &&
                         types.isIdentifier(callee.property) &&
                         callee.property.name === 'createElement'
                     )
