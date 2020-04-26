@@ -70,7 +70,7 @@ fetch_button.addEventListener('click', async () => {
     commits_block.innerHTML = ''
     for (let commit of result.slice(0, 3)) {
         let li = document.createElement('li')
-        li.textContent = `${commit.commit.committer.name}: ${commit.commit.message}`
+        li.textContent = `${commit.commit.author.name}: ${commit.commit.message}`
         commits_block.appendChild(li)
     }
 })
