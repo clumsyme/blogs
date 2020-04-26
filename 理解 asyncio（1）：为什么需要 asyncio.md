@@ -149,13 +149,15 @@ Python 的多线程还需要面临另一个问题，[全局解释器锁](https:/
 
 这也就是 `asyncio` 的基本思想：通过异步 I/O、使用协程实现并发来最大化单线程的利用率。
 
+异步 I/O 接口不会阻塞线程，如果我们发起一个网络请求，这个调用会立刻返回，我们就可以接着处理其他任务浏览。那么我们怎么知道什么时候请求完成了呢？
+
 ## 基于 I/O 多路复用的并发
 
 基于 I/O 多路复用的并发的基本思想就是，提供一个 `select` 函数，当调用时，系统会挂起进程，只有当一个或者多个 I/O 事件发生之后，才将控制返回进程。就像下边一样：
 
 - 如果集合 {0, 4} 中任何描述符准备好了读时返回
 - 如果集合 {1,2,7} 中任意描述符准备好了写时返回
-- 如果等待了 123秒，就超时返回
+- 如果等待了 123 秒，就超时返回
 
 有了 `select` 函数，我们就可以用一个简单的循环：
 
@@ -166,10 +168,20 @@ while True:
         process(event)
 ```
 
-
-
 ### `select`
 
-异步 I/O 接口不会阻塞线程，如果我们发起一个网络请求，这个调用会立刻返回，我们就可以接着处理其他任务浏览。那么我们怎么知道什么时候请求完成了呢？现代的操作系统都提供了各种系统调用，可以让我们监测一些文件的状态，如 [`select`](http://man7.org/linux/man-pages/man2/select.2.html)、[`kqueue`](https://www.freebsd.org/cgi/man.cgi?kqueue)、[epoll](https://zh.wikipedia.org/wiki/Epoll)、[IOCP(Windows)](https://docs.microsoft.com/zh-cn/windows/win32/fileio/i-o-completion-ports?redirectedfrom=MSDN)等。
+现代的操作系统都提供了各种系统调用，可以让我们监测一些文件的状态，除了 [`select`](http://man7.org/linux/man-pages/man2/select.2.html)，现在有性能更好的 [kqueue](https://www.freebsd.org/cgi/man.cgi?kqueue)、[epoll](https://zh.wikipedia.org/wiki/Epoll)、[IOCP(Windows)](https://docs.microsoft.com/zh-cn/windows/win32/fileio/i-o-completion-ports?redirectedfrom=MSDN)等。
 
-Python 在这些基础上，抽象了一个高层的 [`DefaultSelector`](https://docs.python.org/zh-cn/3/library/selectors.html#selectors.DefaultSelector) 类，会根据平台的不同选择不同的实现。该类提供一个 `select` 方法，
+Python 在这些基础上，抽象了一个高层的 [`DefaultSelector`](https://docs.python.org/zh-cn/3/library/selectors.html#selectors.DefaultSelector) 类，会根据平台的不同选择不同的实现。该类提供一个统一的 `select` 方法：
+
+```py
+abstractmethod select(timeout=None)
+```
+
+- 如果 timeout 参数大于 0，那么 `select` 函数会阻塞 `timeout` 时间，到时之后会将控制交还给程序。
+- 如果 timeout 小于等于 0，那么 `select` 函数将直接返回当前准备好的 fileobj，并且不阻塞。
+- 如果 timeout 是 `None`，那么 `select` 函数会一直阻塞，直到一个被监测的文件状态变为 ready。
+
+有了异步 I/O 接口、`select` 函数，我们就可以创建 `asyncio` 应用的核心：**事件循环**。
+
+下一章我们来探索 `asyncio` 中的事件循环。
