@@ -185,3 +185,17 @@ abstractmethod select(timeout=None)
 有了异步 I/O 接口、`select` 函数，我们就可以创建 `asyncio` 应用的核心：**事件循环**。
 
 下一章我们来探索 `asyncio` 中的事件循环。
+
+## 参考：
+
+---
+
+- [I don't understand Python's Asyncio - Armin Ronacher's Thoughts and Writings](https://lucumr.pocoo.org/2016/10/30/i-dont-understand-asyncio/)
+- [asyncio — Asynchronous I/O](https://docs.python.org/3/library/asyncio.html)
+- [threading — Thread-based parallelism](https://docs.python.org/3/library/threading.html)
+- [Global Interpreter Lock - Python Wiki](https://wiki.python.org/moin/GlobalInterpreterLock)
+- [select(2) - Linux manual page](http://man7.org/linux/man-pages/man2/select.2.html)
+- [kqueue - FreeBSD Manual Pages](https://www.freebsd.org/cgi/man.cgi?kqueue)
+- [I/O Completion Ports](https://docs.microsoft.com/zh-cn/windows/win32/fileio/i-o-completion-ports?redirectedfrom=MSDN)
+- [selectors — High-level I/O multiplexing](https://docs.python.org/3/library/selectors.html)
+- [深入理解计算机系统](https://book.douban.com/subject/26912767/)
